@@ -1,0 +1,81 @@
+unit Unit5;
+
+interface
+
+uses
+  Forms, Classes, ExtCtrls,Generics.Collections;
+
+Type
+
+  TPilha = class
+  private
+    Index : Integer;
+    FAowner : TPanel;
+    List : TQueue<TPanel>;
+    procedure AdicionandoImagemPilha;
+  public
+    procedure ReorganizarIndex;
+    procedure AddProcesso;
+    procedure RetiraProcesso;
+    constructor Create(Aowner : TPanel);
+  end;
+
+implementation
+
+uses
+  Dialogs, Controls, SysUtils, Graphics;
+
+{ TPilha }
+
+procedure TPilha.AddProcesso;
+begin
+  If List.Count < 10 then
+    AdicionandoImagemPilha
+  else
+    ShowMessage('PILHA CHEIA... HOOD ESVAZIA!!!');
+end;
+
+
+procedure TPilha.AdicionandoImagemPilha;
+var
+  FPanel : TPanel;
+begin
+  FPanel := TPanel.Create(FAowner);
+  FPanel.Parent :=  FAowner;
+  FPanel.BorderStyle := bsNone;
+  FPanel.BevelOuter := bvNone;
+  FPanel.Height := 65;
+  FPanel.Width := 40;
+  FPanel.Color := Clred;
+  FPanel.Align := alLeft;
+  FPanel.Caption := IntToStr(List.Count + 1);
+
+  List.Enqueue(FPanel);
+end;
+
+constructor TPilha.Create(Aowner: TPanel);
+begin
+  Self.FAowner := aowner;
+  List := TQueue<TPanel>.Create;
+  Index := 1;
+end;
+
+procedure TPilha.ReorganizarIndex;
+begin
+
+end;
+
+procedure TPilha.RetiraProcesso;
+var
+  ObjTemp : TPanel;
+begin
+ if List.Count <> 0 then
+ begin
+   ObjTemp := TPanel(List.Extract);
+   FreeAndNil(ObjTemp);
+ end
+ else
+   showmessage('PILHA VAZIA');
+end;
+
+end.

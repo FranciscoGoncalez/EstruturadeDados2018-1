@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+struct ponto {
+       double x; // endereço na coordenada X
+       double y; // endereço na coordenada Y
+};
+
+struct lista {
+       int tam; // variável pra controlar o tamanho da lista
+       struct ponto v[100]; // Área de armazenamento da lista
+};
+
+void iniciaLista (lista *l){
+     l->tam = 0;    
+}
+
+void inserir(lista *l, ponto p){
+}
+
+void percorrer(lista l){
+}
+
+int buscarSequencial(lista l, ponto p){
+}
+
+void remover(lista *l, ponto p){
+}
+
+// Prog. Principal
+int main(){
+    lista l;
+    ponto temp;
+	int i, n;
+    iniciaLista(&l);
+        
+	cout << "Digite o tamanho da entrada: ";
+    cin >> n;
+	for (i = 0; i < n; i++){
+		cout << "Digite a coordenada X do ponto " << (i + 1) << ": ";
+		cin >> temp.x;
+ 	    cout << "Digite a coordenada Y do ponto " << (i + 1) << ": ";
+		cin >> temp.y;
+		inserir(&l, temp);
+	}
+	percorrer(l);
+	system("pause");
+	return 0;
+}
