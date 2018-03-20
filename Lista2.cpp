@@ -47,13 +47,20 @@ void remover(int v[], int &n, int e){
 
 
 void showIn(int v[], int *tam){
-     int x;
+     int x, pos=0;
      cout << "Digite um numero: ";
 		cin >> x;
-		if(inserir(v, tam, x)){
-           cout<<"\n inncluindo...";
+		pos=buscarSequencial(v, *tam, x);
+		while(pos != -1){
+                  cout<<"\n Elemento já existe!";
+                  cout<<"\n Informe outro: ";
+                  cin>>x;
+                  pos=buscarSequencial(v, *tam, x);
+                  }
+                  if(inserir(v, tam, x)){
+                                cout<<"Incluido com Sucesso!";
            }else{
-                 cout<<"ERRO de inclusao";
+                 cout<<"ERRO lista cheia...";
                  }
                  return;
 }
